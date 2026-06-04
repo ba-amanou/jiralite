@@ -26,6 +26,6 @@ public class Role {
 
     @Column(nullable = false, unique = true, length = 20)
     @Enumerated(EnumType.STRING)
-    private RoleType type;
+    private GlobalRole type;
 
 }
