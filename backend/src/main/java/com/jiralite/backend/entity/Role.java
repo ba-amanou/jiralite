@@ -2,6 +2,9 @@ package com.jiralite.backend.entity;
 
 import java.util.UUID;
 
+import com.jiralite.backend.entity.base.BaseEntity;
+import com.jiralite.backend.entity.enums.GlobalRole;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -19,7 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Role {
+public class Role extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
