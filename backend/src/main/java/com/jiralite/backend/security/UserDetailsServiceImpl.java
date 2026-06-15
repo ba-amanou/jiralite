@@ -1,7 +1,6 @@
 package com.jiralite.backend.security;
 
 import java.util.Collections;
-import java.util.UUID;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,10 +20,10 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        return userRepository.findById(UUID.fromString(userId))
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email)
                 .map(user -> new org.springframework.security.core.userdetails.User(user.getId().toString(),user.getPassword(),Collections.emptyList()))
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + userId));
-    }
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + email));
+    }    
 
 }
