@@ -7,7 +7,6 @@ import java.util.UUID;
 import javax.crypto.SecretKey;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.jiralite.backend.entity.User;
@@ -36,10 +35,6 @@ public class JwtService {
             .expiration(new Date(System.currentTimeMillis() + expiration))
             .signWith(getSigningKey())
             .compact();
-    }
-
-    public boolean isTokenValid(String token, UserDetails userDetails) {
-        return parseClaims(token).getSubject().equals(userDetails.getUsername());
     }
 
     public UUID extractUserId(String token) {
