@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn test)",
+      "Bash(mvn compile)",
+      "Bash(mvn -pl * test *)",
+      "Bash(npm test)",
+      "Bash(ng test *)",
+      "Bash(ng build *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Read(**)",
+      "Edit(./backend/src/**)",
+      "Edit(./frontend/**)"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(git commit *)",
+      "Bash(mvn install *)",
+      "Bash(npm install *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/application-prod.yml)",
+      "Read(./**/application-*.properties)",
+      "Read(./secrets/**)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(rm -rf*)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)"
+    ],
+    "defaultMode": "default"
+  }
+}
