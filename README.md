@@ -1,5 +1,8 @@
 # JiraLite
 
+[![Backend CI](https://github.com/ba-amanou/jiralite/actions/workflows/backend-ci.yml/badge.svg)](https://github.com/ba-amanou/jiralite/actions/workflows/backend-ci.yml)
+[![Frontend CI](https://github.com/ba-amanou/jiralite/actions/workflows/frontend-ci.yml/badge.svg)](https://github.com/ba-amanou/jiralite/actions/workflows/frontend-ci.yml)
+
 A Project management application inspired by Jira.
 
 ## Why this project ? 
@@ -32,6 +35,7 @@ This project also serves as a testbed to practice a deliberate, reviewed workflo
 ## Project status
 
 - **Done**: JWT authentication (register / login), Spring Security setup, JPA auditing (`createdBy` / `createdAt`), soft-delete groundwork
+- **Done**: CI (GitHub Actions) running backend and frontend tests on push/PR to `main`
 - **In progress**: domain modeled (`Project`, `Sprint`, `Task`, `UserProject`, role-based access) but CRUD endpoints not implemented yet
 - **In progress**: frontend is still the bare Angular CLI scaffold — feature UI and API integration not started
 
