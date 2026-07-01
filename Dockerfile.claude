@@ -1,0 +1,26 @@
+FROM eclipse-temurin:21-jdk-jammy
+
+ARG NODE_MAJOR=20
+ARG UID=1000
+ARG GID=1000
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      curl git ca-certificates ripgrep unzip gnupg maven && \
+    curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash - && \
+    apt-get install -y --no-install-recommends nodejs && \
+    rm -rf /var/lib/apt/lists/*
+
+ARG CLAUDE_CODE_VERSION=2.1.197
+ARG ANGULAR_CLI_VERSION=21.2.13
+
+RUN npm install -g @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION} @angular/cli@${ANGULAR_CLI_VERSION} && \
+    npm cache clean --force
+
+RUN groupadd -g ${GID} agent && \
+    useradd -m -u ${UID} -g ${GID} agent && \
+    git config --system --add safe.directory /work
+
+USER agent
+WORKDIR /work
+EXPOSE 4200 8080
+ENTRYPOINT ["claude"]
